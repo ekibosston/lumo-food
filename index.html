@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Открыть сайт Morozko</title>
+
+  <!-- ✅ Добавляем сюда -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#ff6600">
+
+  <!-- 🔁 Автоматический переход -->
+  <meta http-equiv="refresh" content="https://www.instagram.com/reel/DPdbDrPjTVv/?igsh=NXUwOTk5ampkcmQ3">
+  <script>
+    window.location.replace("https://www.instagram.com/reel/DPdbDrPjTVv/?igsh=NXUwOTk5ampkcmQ3");
+  </script>
+
+  <!-- 🎨 Оформление -->
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f5f7fa;
+      color: #222;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      text-align: center;
+      padding: 24px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      max-width: 400px;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 12px 20px;
+      font-size: 18px;
+      text-decoration: none;
+      color: #fff;
+      background: #0088cc;
+      border-radius: 8px;
+      transition: background 0.2s ease;
+    }
+    .btn:hover {
+      background: #006699;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Переход на сайт</h1>
+    <p>Нажмите кнопку ниже, если страница не открылась автоматически:</p>
+    <a class="btn" href="https://www.instagram.com/reel/DPdbDrPjTVv/?igsh=NXUwOTk5ampkcmQ3">Открыть сайт</a>
+  </div>
+
+  <!-- 📲 Регистрация Service Worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js')
+        .then(() => console.log('✅ Service Worker зарегистрирован'))
+        .catch(err => console.log('❌ Ошибка регистрации SW', err));
+    }
+  </script>
+</body>
+</html>
