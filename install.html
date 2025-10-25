@@ -75,6 +75,23 @@
       margin-top: 24px;
       border-radius: 12px;
     }
+
+    .install-btn {
+      display: none;
+      margin-top: 16px;
+      background: #000;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+
+    .install-btn:hover {
+      opacity: 0.9;
+    }
   </style>
 </head>
 
@@ -85,6 +102,7 @@
     <p>Доставка продуктов в один клик</p>
     <a class="btn" href="https://ekibosston.github.io/lumo-food/">Открыть приложение</a>
     <p class="city">📍 Экибастуз</p>
+    <button id="installBtn" class="install-btn">📲 Установить Lumo Food</button>
     <canvas id="qrcode"></canvas>
   </div>
 
@@ -96,6 +114,24 @@
       'https://ekibosston.github.io/lumo-food/',
       { width: 180, color: { dark: '#111', light: '#ffffff' } }
     );
+  </script>
+
+  <!-- Install Prompt -->
+  <script>
+    let deferredPrompt;
+    const installBtn = document.getElementById('installBtn');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      installBtn.style.display = 'inline-block';
+
+      installBtn.addEventListener('click', () => {
+        installBtn.style.display = 'none';
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(() => deferredPrompt = null);
+      });
+    });
   </script>
 </body>
 </html>
