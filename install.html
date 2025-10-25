@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lumo Food — Установи приложение</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#4CAF50">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Inter", Arial, sans-serif;
+      background: #fffbea;
+      color: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      padding: 40px 28px;
+      max-width: 380px;
+      width: 90%;
+    }
+
+    img.logo {
+      width: 96px;
+      height: 96px;
+      border-radius: 24px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #111;
+    }
+
+    p {
+      font-size: 16px;
+      color: #444;
+      margin-bottom: 24px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #4CAF50;
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 600;
+      padding: 14px 24px;
+      border-radius: 12px;
+      transition: background 0.2s ease;
+    }
+    .btn:hover {
+      background: #3e9142;
+    }
+
+    .city {
+      font-size: 14px;
+      margin-top: 10px;
+      color: #555;
+    }
+
+    canvas {
+      margin-top: 24px;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <img src="icons/icon-512.png" alt="Lumo Food" class="logo">
+    <h1>Lumo Food</h1>
+    <p>Доставка продуктов в один клик</p>
+    <a class="btn" href="https://ekibosston.github.io/lumo-food/">Открыть приложение</a>
+    <p class="city">📍 Экибастуз</p>
+    <canvas id="qrcode"></canvas>
+  </div>
+
+  <!-- QR-код -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+  <script>
+    QRCode.toCanvas(
+      document.getElementById('qrcode'),
+      'https://ekibosston.github.io/lumo-food/',
+      { width: 180, color: { dark: '#111', light: '#ffffff' } }
+    );
+  </script>
+</body>
+</html>
