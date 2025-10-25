@@ -3,16 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Открыть сайт Morozko</title>
+  <title>Lumo Food</title>
 
-  <!-- ✅ Добавляем сюда -->
+  <!-- 📱 PWA -->
   <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#ff6600">
+  <meta name="theme-color" content="#00a651">
+  <link rel="icon" href="icons/icon-192.png" type="image/png">
 
-  <!-- 🔁 Автоматический переход -->
-  <meta http-equiv="refresh" content="https://morozko12.ucoz.net/panel/?a=tgshop&l=setup">
+  <!-- 🔁 Автоматический переход (через 3 секунды) -->
+  <meta http-equiv="refresh" content="3;url=https://morozko12.ucoz.net/panel/?a=tgshop&l=setup">
   <script>
-    window.location.replace("https://morozko12.ucoz.net/panel/?a=tgshop&l=setup");
+    setTimeout(() => {
+      window.location.href = "https://morozko12.ucoz.net/panel/?a=tgshop&l=setup";
+    }, 3000);
   </script>
 
   <!-- 🎨 Оформление -->
@@ -35,6 +38,11 @@
       box-shadow: 0 4px 16px rgba(0,0,0,0.08);
       max-width: 400px;
     }
+    .logo {
+      width: 96px;
+      height: 96px;
+      margin-bottom: 16px;
+    }
     .btn {
       display: inline-block;
       margin-top: 18px;
@@ -42,21 +50,22 @@
       font-size: 18px;
       text-decoration: none;
       color: #fff;
-      background: #0088cc;
+      background: #00a651;
       border-radius: 8px;
       transition: background 0.2s ease;
     }
     .btn:hover {
-      background: #006699;
+      background: #008c4a;
     }
   </style>
 </head>
 
 <body>
   <div class="container">
-    <h1>Переход на сайт</h1>
-    <p>Нажмите кнопку ниже, если страница не открылась автоматически:</p>
-    <a class="btn" href="https://morozko12.ucoz.net/panel/?a=tgshop&l=setup">Открыть сайт</a>
+    <img src="icons/icon-192.png" alt="Lumo Food" class="logo">
+    <h1>Переход на сайт Lumo Food</h1>
+    <p>Через пару секунд вы будете перенаправлены...</p>
+    <a class="btn" href="https://morozko12.ucoz.net/panel/?a=tgshop&l=setup">Открыть сейчас</a>
   </div>
 
   <!-- 📲 Регистрация Service Worker -->
@@ -67,6 +76,4 @@
         .catch(err => console.log('❌ Ошибка регистрации SW', err));
     }
   </script>
-</body>
-
-</html>
+</bod
