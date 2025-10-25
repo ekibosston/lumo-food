@@ -5,20 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lumo Food</title>
 
-  <!-- 📱 PWA -->
+  <!-- 🧩 Подключаем манифест и тему -->
   <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#00a651">
-  <link rel="icon" href="icons/icon-192.png" type="image/png">
+  <meta name="theme-color" content="#ff6600">
 
-  <!-- 🔁 Автоматический переход (через 3 секунды) -->
-  <meta http-equiv="refresh" content="3;url=https://morozko12.ucoz.net/panel/?a=tgshop&l=setup">
-  <script>
-    setTimeout(() => {
-      window.location.href = "https://morozko12.ucoz.net/panel/?a=tgshop&l=setup";
-    }, 3000);
-  </script>
-
-  <!-- 🎨 Оформление -->
+  <!-- 🎨 Стили -->
   <style>
     body {
       margin: 0;
@@ -26,54 +17,63 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #f5f7fa;
-      color: #222;
-      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ff6600, #ff9966);
+      color: #fff;
+      font-family: "Arial", sans-serif;
     }
     .container {
       text-align: center;
       padding: 24px;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
       max-width: 400px;
+      width: 90%;
+      backdrop-filter: blur(8px);
     }
-    .logo {
-      width: 96px;
-      height: 96px;
-      margin-bottom: 16px;
+    h1 {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+    p {
+      font-size: 16px;
+      margin-bottom: 24px;
     }
     .btn {
       display: inline-block;
-      margin-top: 18px;
-      padding: 12px 20px;
+      padding: 14px 24px;
       font-size: 18px;
       text-decoration: none;
       color: #fff;
-      background: #00a651;
+      background: #0088cc;
       border-radius: 8px;
-      transition: background 0.2s ease;
+      transition: background 0.25s ease;
     }
     .btn:hover {
-      background: #008c4a;
+      background: #006699;
     }
   </style>
 </head>
 
 <body>
   <div class="container">
-    <img src="icons/icon-192.png" alt="Lumo Food" class="logo">
-    <h1>Переход на сайт Lumo Food</h1>
-    <p>Через пару секунд вы будете перенаправлены...</p>
-    <a class="btn" href="https://morozko12.ucoz.net/panel/?a=tgshop&l=setup">Открыть сейчас</a>
+    <h1>Добро пожаловать в Lumo Food</h1>
+    <p>Ваш онлайн-магазин вкусной еды 🍱</p>
+    <a class="btn" href="https://morozko12.ucoz.net/panel/?a=tgshop&l=setup" target="_blank">
+      Открыть магазин
+    </a>
+    <p style="font-size: 13px; opacity: 0.8; margin-top: 16px;">
+      Можно добавить на главный экран 📲
+    </p>
   </div>
 
   <!-- 📲 Регистрация Service Worker -->
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js')
+      navigator.serviceWorker.register('sw.js', { scope: './' })
         .then(() => console.log('✅ Service Worker зарегистрирован'))
-        .catch(err => console.log('❌ Ошибка регистрации SW', err));
+        .catch(err => console.log('❌ Ошибка SW', err));
     }
   </script>
-</bod
+</body>
+</html>
