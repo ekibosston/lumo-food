@@ -1,81 +1,99 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Lumo Food</title>
 
-  <!-- 🧩 Подключаем манифест и тему -->
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#ff6600">
+  <!-- Цвета -->
+  <meta name="theme-color" content="#008000" />
+  <meta name="background-color" content="#ffffff" />
 
-  <!-- 🎨 Стили -->
+  <!-- Manifest и Service Worker -->
+  <link rel="manifest" href="manifest.json" />
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js');
+      });
+    }
+  </script>
+
+  <!-- Стили -->
   <style>
     body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #ffffff;
+      color: #111;
       margin: 0;
-      height: 100vh;
+      padding: 0;
       display: flex;
-      align-items: center;
+      flex-direction: column;
       justify-content: center;
-      background: linear-gradient(135deg, #ff6600, #ff9966);
-      color: #fff;
-      font-family: "Arial", sans-serif;
-    }
-    .container {
+      align-items: center;
+      height: 100vh;
       text-align: center;
-      padding: 24px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 16px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-      max-width: 400px;
-      width: 90%;
-      backdrop-filter: blur(8px);
+    }
+    img.logo {
+      width: 150px;
+      height: 150px;
+      margin-bottom: 20px;
     }
     h1 {
-      font-size: 28px;
-      margin-bottom: 12px;
+      font-size: 26px;
+      color: #008000;
+      margin-bottom: 10px;
     }
     p {
+      color: #444;
+      margin-bottom: 30px;
+    }
+    button {
+      background-color: #008000;
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 10px;
       font-size: 16px;
-      margin-bottom: 24px;
+      cursor: pointer;
     }
-    .btn {
-      display: inline-block;
-      padding: 14px 24px;
-      font-size: 18px;
-      text-decoration: none;
-      color: #fff;
-      background: #0088cc;
-      border-radius: 8px;
-      transition: background 0.25s ease;
-    }
-    .btn:hover {
-      background: #006699;
+    button:hover {
+      background-color: #006400;
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <h1>сьебались все бычстро в Lumo Food</h1>
-    <p>Ваш онлайн-магазин ахуевшей еды 🍱</p>
-    <a class="btn" href="https://morozko12.ucoz.net/panel/?a=tgshop&l=setup" target="_blank">
-      Открыть магазин
-    </a>
-    <p style="font-size: 13px; opacity: 0.8; margin-top: 16px;">
-      пошли все на хуй 📲
-    </p>
-  </div>
+  <img src="icons/icon-512.png" alt="Lumo Food" class="logo" />
+  <h1>Lumo Food</h1>
+  <p>Доставка продуктов в один клик</p>
 
-  <!-- 📲 Регистрация Service Worker -->
+  <button id="installBtn" hidden>Установить приложение</button>
+
   <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js', { scope: './' })
-        .then(() => console.log('✅ Service Worker зарегистрирован'))
-        .catch(err => console.log('❌ Ошибка SW', err));
-    }
+    // 🔹 Установка PWA
+    let deferredPrompt;
+    const installBtn = document.getElementById('installBtn');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      installBtn.hidden = false;
+    });
+
+    installBtn.addEventListener('click', async () => {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        const choice = await deferredPrompt.userChoice;
+        deferredPrompt = null;
+        installBtn.hidden = true;
+      }
+    });
+
+    // 🔹 Автоматический переход через 5 секунд
+    setTimeout(() => {
+      window.location.href = "https://zifi.shop"; // сюда ставим ссылку на твой магазин
+    }, 5000);
   </script>
 </body>
 </html>
-
-
